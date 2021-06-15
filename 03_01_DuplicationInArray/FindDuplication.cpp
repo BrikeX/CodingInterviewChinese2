@@ -18,6 +18,8 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 那么对应的输出是重复的数字2或者3。
 
 #include <cstdio>
+#include <string>
+#include <iostream>
 
 // 参数:
 //        numbers:     一个整数数组
@@ -69,9 +71,9 @@ bool contains(int array[], int length, int number)
     return false;
 }
 
-void test(char* testName, int numbers[], int lengthNumbers, int expected[], int expectedExpected, bool validArgument)
+void test(const std::string& testName, int numbers[], int lengthNumbers, int expected[], int expectedExpected, bool validArgument)
 {
-    printf("%s begins: ", testName);
+    std::cout << testName << " begins: ";
 
     int duplication;
     bool validInput = duplicate(numbers, lengthNumbers, &duplication);
@@ -140,7 +142,7 @@ void test6()
     test("Test6", numbers, 0, duplications, sizeof(duplications) / sizeof(int), false);
 }
 
-void main()
+int main(int argc, char const *argv[])
 {
     test1();
     test2();
@@ -148,4 +150,6 @@ void main()
     test4();
     test5();
     test6();
+
+    return 0;
 }
