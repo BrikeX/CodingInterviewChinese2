@@ -37,7 +37,7 @@ int getDuplication(const int* numbers, int length)
     int end = length - 1;
     while(end >= start)
     {
-        int middle = ((end - start) >> 1) + start;
+        int middle = start + (end - start) / 2;
         int count = countRange(numbers, length, start, middle);
         if(end == start)
         {
@@ -162,7 +162,7 @@ void test10()
     test("test10", numbers, 0, duplications, sizeof(duplications) / sizeof(int));
 }
 
-void main()
+int main(int argc, char const *argv[])
 {
     test1();
     test2();
@@ -174,4 +174,6 @@ void main()
     test8();
     test9();
     test10();
+
+    return 0;
 }
