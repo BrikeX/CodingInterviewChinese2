@@ -30,32 +30,40 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 //        false - 输入无效，或者数组中没有重复的数字
 bool duplicate(int numbers[], int length, int* duplication)
 {
-    if(numbers == nullptr || length <= 0)
+    if (!numbers || length <= 0)
+    {
         return false;
-
-    for(int i = 0; i < length; ++i)
-    {
-        if(numbers[i] < 0 || numbers[i] > length - 1)
-            return false;
     }
-
-    for(int i = 0; i < length; ++i)
+    
+    for (int i = 0; i < length; i++)
     {
-        while(numbers[i] != i)
+        if (numbers[i] < 0 || numbers[i] >= length)
         {
-            if(numbers[i] == numbers[numbers[i]])
+            return false;
+        }
+    }
+    
+    for (int i = 0; i < length; i++)
+    {
+        while (i != numbers[i])
+        {
+            if (numbers[i] == numbers[numbers[i]])
             {
                 *duplication = numbers[i];
+
                 return true;
             }
 
-            // 交换numbers[i]和numbers[numbers[i]]             
-            int temp = numbers[i];
-            numbers[i] = numbers[temp];
-            numbers[temp] = temp;
+            // 交换 numbers[i] 和 numbers[numbers[i]]
+            // 在如下交换时，第三步的下标必须是第一步保存的值
+            int num = numbers[i];
+
+            numbers[i] = numbers[num];
+
+            numbers[num] = num;
         }
     }
-
+    
     return false;
 }
 
