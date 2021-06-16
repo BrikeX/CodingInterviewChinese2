@@ -43,7 +43,7 @@ int Min(int* numbers, int length)
  
         // 如果下标为index1、index2和indexMid指向的三个数字相等，
         // 则只能顺序查找
-        indexMid = (index1 + index2) / 2;
+        indexMid = index1 + (index2 - index1) / 2;
         if(numbers[index1] == numbers[index2] && numbers[indexMid] == numbers[index1])
             return MinInOrder(numbers, index1, index2);
 
