@@ -18,38 +18,49 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 整数，判断数组中是否含有该整数。
 
 #include <cstdio>
+#include <string>
+#include <iostream>
 
 bool Find(int* matrix, int rows, int columns, int number)
 {
-    bool found = false;
-
-    if(matrix != nullptr && rows > 0 && columns > 0)
+    if (!matrix || rows <= 0 || columns <= 0)
     {
-        int row = 0;
-        int column = columns - 1;
-        while(row < rows && column >=0)
+        return false;
+    }
+    
+    int row = 0, column = columns - 1;
+
+    int index;
+
+    while (row < rows && column >= 0)
+    {
+        index = row * columns + column;
+
+        if (matrix[index] == number)
         {
-            if(matrix[row * columns + column] == number)
-            {
-                found = true;
-                break;
-            }
-            else if(matrix[row * columns + column] > number)
-                -- column;
-            else
-                ++ row;
+            return true;
+        }
+        else if (matrix[index] > number)
+        {
+            column--;
+        }
+        else
+        {
+            row++;
         }
     }
-
-    return found;
+    
+    return false;
 }
 
 // ====================测试代码====================
-void Test(char* testName, int* matrix, int rows, int columns, int number, bool expected)
+void Test(const std::string& testName, int* matrix, int rows, int columns, int number, bool expected)
 {
-    if(testName != nullptr)
-        printf("%s begins: ", testName);
-
+    if (!testName.empty())
+    {
+        std::cout << testName << " begins: ";
+    }
+    
     bool result = Find(matrix, rows, columns, number);
     if(result == expected)
         printf("Passed.\n");
