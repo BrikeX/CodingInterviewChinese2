@@ -18,9 +18,11 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 2, 4, 7, 3, 5, 6, 8}和中序遍历序列{4, 7, 2, 1, 5, 3, 8, 6}，则重建出
 // 图2.6所示的二叉树并输出它的头结点。
 
-#include "..\Utilities\BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 #include <exception>
 #include <cstdio>
+#include <string>
+#include <iostream>
 
 BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startInorder, int* endInorder);
 
@@ -50,7 +52,7 @@ BinaryTreeNode* ConstructCore
         if(startInorder == endInorder && *startPreorder == *startInorder)
             return root;
         else
-            throw std::exception("Invalid input.");
+            throw "Invalid input.";
     }
 
     // 在中序遍历中找到根结点的值
@@ -59,7 +61,7 @@ BinaryTreeNode* ConstructCore
         ++ rootInorder;
 
     if(rootInorder == endInorder && *rootInorder != rootValue)
-        throw std::exception("Invalid input.");
+        throw "Invalid input.";
 
     int leftLength = rootInorder - startInorder;
     int* leftPreorderEnd = startPreorder + leftLength;
@@ -80,10 +82,12 @@ BinaryTreeNode* ConstructCore
 }
 
 // ====================测试代码====================
-void Test(char* testName, int* preorder, int* inorder, int length)
+void Test(const std::string& testName, int* preorder, int* inorder, int length)
 {
-    if(testName != nullptr)
-        printf("%s begins:\n", testName);
+    if (!testName.empty())
+    {
+        std::cout << testName << "begins:" << std::endl;
+    }
 
     printf("The preorder sequence is: ");
     for(int i = 0; i < length; ++ i)
@@ -108,14 +112,16 @@ void Test(char* testName, int* preorder, int* inorder, int length)
     }
 }
 
-// 普通二叉树
-//              1
-//           /     \
-//          2       3  
-//         /       / \
-//        4       5   6
-//         \         /
-//          7       8
+/*
+普通二叉树
+             1
+          /     \
+         2       3  
+        /       / \
+       4       5   6
+        \         /
+         7       8
+*/
 void Test1()
 {
     const int length = 8;
@@ -125,16 +131,18 @@ void Test1()
     Test("Test1", preorder, inorder, length);
 }
 
-// 所有结点都没有右子结点
-//            1
-//           / 
-//          2   
-//         / 
-//        3 
-//       /
-//      4
-//     /
-//    5
+/*
+所有结点都没有右子结点
+           1
+          / 
+         2   
+        / 
+       3 
+      /
+     4
+    /
+   5
+*/
 void Test2()
 {
     const int length = 5;
@@ -144,16 +152,18 @@ void Test2()
     Test("Test2", preorder, inorder, length);
 }
 
-// 所有结点都没有左子结点
-//            1
-//             \ 
-//              2   
-//               \ 
-//                3 
-//                 \
-//                  4
-//                   \
-//                    5
+/*
+所有结点都没有左子结点
+           1
+            \ 
+             2   
+              \ 
+               3 
+                \
+                 4
+                  \
+                   5
+*/
 void Test3()
 {
     const int length = 5;
@@ -173,12 +183,14 @@ void Test4()
     Test("Test4", preorder, inorder, length);
 }
 
-// 完全二叉树
-//              1
-//           /     \
-//          2       3  
-//         / \     / \
-//        4   5   6   7
+/*
+完全二叉树
+             1
+          /     \
+         2       3  
+        / \     / \
+       4   5   6   7
+*/
 void Test5()
 {
     const int length = 7;
