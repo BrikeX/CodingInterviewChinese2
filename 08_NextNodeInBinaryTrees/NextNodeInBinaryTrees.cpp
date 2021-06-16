@@ -17,6 +17,8 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 树中的结点除了有两个分别指向左右子结点的指针以外，还有一个指向父结点的指针。
 
 #include <stdio.h>
+#include <string>
+#include <iostream>
 
 struct BinaryTreeNode
 {
@@ -136,10 +138,12 @@ void DestroyTree(BinaryTreeNode* pRoot)
 }
 
 // ====================测试代码====================
-void Test(char* testName, BinaryTreeNode* pNode, BinaryTreeNode* expected)
+void Test(const std::string& testName, BinaryTreeNode* pNode, BinaryTreeNode* expected)
 {
-    if(testName != nullptr)
-        printf("%s begins: ", testName);
+    if (!testName.empty())
+    {
+        std::cout << testName << " begins: ";
+    }
 
     BinaryTreeNode* pNext = GetNext(pNode);
     if(pNext == expected)
