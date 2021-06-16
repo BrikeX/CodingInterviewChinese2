@@ -18,57 +18,61 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 
 #include <cstdio>
 #include <cstring>
+#include <string>
+#include <iostream>
 
 /*length 为字符数组str的总容量，大于或等于字符串str的实际长度*/
 void ReplaceBlank(char str[], int length)
 {
-    if(str == nullptr && length <= 0)
+    if(str == nullptr || length <= 0)
         return;
 
-    /*originalLength 为字符串str的实际长度*/
-    int originalLength = 0;
-    int numberOfBlank = 0;
-    int i = 0;
-    while(str[i] != '\0')
+    int str_length = 0, blank_count = 0;
+
+    while (str[str_length] != '\0')
     {
-        ++ originalLength;
+        if (str[str_length++] == ' ')
+        {
+            blank_count++;
+        }
+    }
+    
+    int new_length = str_length + blank_count * 2;
 
-        if(str[i] == ' ')
-            ++ numberOfBlank;
-
-        ++ i;
+    if (new_length > length)
+    {
+        return;
     }
 
-    /*newLength 为把空格替换成'%20'之后的长度*/
-    int newLength = originalLength + numberOfBlank * 2;
-    if(newLength > length)
-        return;
+    int index_str = str_length, index_new = new_length;
 
-    int indexOfOriginal = originalLength;
-    int indexOfNew = newLength;
-    while(indexOfOriginal >= 0 && indexOfNew > indexOfOriginal)
+    while (index_str < index_new)
     {
-        if(str[indexOfOriginal] == ' ')
+        if (str[index_str] == ' ')
         {
-            str[indexOfNew --] = '0';
-            str[indexOfNew --] = '2';
-            str[indexOfNew --] = '%';
+            str[index_new--] = '0';
+
+            str[index_new--] = '2';
+
+            str[index_new--] = '%';
         }
         else
         {
-            str[indexOfNew --] = str[indexOfOriginal];
+            str[index_new--] = str[index_str];
         }
-
-        -- indexOfOriginal;
+        
+        index_str--;
     }
 }
 
 // ====================测试代码====================
-void Test(char* testName, char str[], int length, char expected[])
+void Test(const std::string& testName, char str[], int length, char expected[])
 {
-    if(testName != nullptr)
-        printf("%s begins: ", testName);
-
+    if (!testName.empty())
+    {
+        std::cout << testName << " begins: ";
+    }
+    
     ReplaceBlank(str, length);
 
     if(expected == nullptr && str == nullptr)
@@ -87,7 +91,10 @@ void Test1()
     const int length = 100;
 
     char str[length] = "hello world";
-    Test("Test1", str, length, "hello%20world");
+
+    char expected[] = "hello%20world";
+
+    Test("Test1", str, length, expected);
 }
 
 // 空格在句子开头
@@ -96,7 +103,10 @@ void Test2()
     const int length = 100;
 
     char str[length] = " helloworld";
-    Test("Test2", str, length, "%20helloworld");
+
+    char expected[] = "%20helloworld";
+
+    Test("Test2", str, length, expected);
 }
 
 // 空格在句子末尾
@@ -105,7 +115,10 @@ void Test3()
     const int length = 100;
 
     char str[length] = "helloworld ";
-    Test("Test3", str, length, "helloworld%20");
+
+    char expected[] = "helloworld%20";
+
+    Test("Test3", str, length, expected);
 }
 
 // 连续有两个空格
@@ -114,7 +127,10 @@ void Test4()
     const int length = 100;
 
     char str[length] = "hello  world";
-    Test("Test4", str, length, "hello%20%20world");
+
+    char expected[] = "hello%20%20world";
+
+    Test("Test4", str, length, expected);
 }
 
 // 传入nullptr
@@ -129,7 +145,10 @@ void Test6()
     const int length = 100;
 
     char str[length] = "";
-    Test("Test6", str, length, "");
+
+    char expected[] = "";
+
+    Test("Test6", str, length, expected);
 }
 
 //传入内容为一个空格的字符串
@@ -138,7 +157,10 @@ void Test7()
     const int length = 100;
 
     char str[length] = " ";
-    Test("Test7", str, length, "%20");
+
+    char expected[] = "%20";
+
+    Test("Test7", str, length, expected);
 }
 
 // 传入的字符串没有空格
@@ -147,7 +169,10 @@ void Test8()
     const int length = 100;
 
     char str[length] = "helloworld";
-    Test("Test8", str, length, "helloworld");
+
+    char expected[] = "helloworld";
+
+    Test("Test8", str, length, expected);
 }
 
 // 传入的字符串全是空格
@@ -156,7 +181,10 @@ void Test9()
     const int length = 100;
 
     char str[length] = "   ";
-    Test("Test9", str, length, "%20%20%20");
+
+    char expected[] = "%20%20%20";
+
+    Test("Test9", str, length, expected);
 }
 
 int main(int argc, char* argv[])
