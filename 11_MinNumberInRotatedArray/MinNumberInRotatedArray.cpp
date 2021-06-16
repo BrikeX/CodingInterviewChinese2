@@ -50,7 +50,7 @@ int Min(int* numbers, int length)
         // ËõĞ¡²éÕÒ·¶Î§
         if(numbers[indexMid] >= numbers[index1])
             index1 = indexMid;
-        else if(numbers[indexMid] < numbers[index2])
+        else if(numbers[indexMid] <= numbers[index2])
             index2 = indexMid;
     }
 
