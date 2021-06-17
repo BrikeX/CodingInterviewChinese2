@@ -51,15 +51,15 @@ void Test(int number, unsigned int expected)
 {
     int actual = NumberOf1_Solution1(number);
     if (actual == expected)
-        printf("Solution1: Test for %p passed.\n", number);
+        printf("Solution1: Test for 0x%x passed.\n", number);
     else
-        printf("Solution1: Test for %p failed.\n", number);
+        printf("Solution1: Test for 0x%x failed.\n", number);
 
     actual = NumberOf1_Solution2(number);
     if (actual == expected)
-        printf("Solution2: Test for %p passed.\n", number);
+        printf("Solution2: Test for 0x%x passed.\n", number);
     else
-        printf("Solution2: Test for %p failed.\n", number);
+        printf("Solution2: Test for 0x%x failed.\n", number);
 
     printf("\n");
 }
