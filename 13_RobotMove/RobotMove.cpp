@@ -86,7 +86,7 @@ int getDigitSum(int number)
 }
 
 // ====================²âÊÔ´úÂë====================
-void test(char* testName, int threshold, int rows, int cols, int expected)
+void test(const char* testName, int threshold, int rows, int cols, int expected)
 {
     if(testName != nullptr)
         printf("%s begins: ", testName);
