@@ -18,16 +18,16 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 
 #include <iostream>
 #include <cmath>
+#include <cfloat>
 
 bool g_InvalidInput = false;
-bool equal(double num1, double num2);
 double PowerWithUnsignedExponent(double base, unsigned int exponent);
 
 double Power(double base, int exponent)
 {
     g_InvalidInput = false;
 
-    if (equal(base, 0.0) && exponent < 0)
+    if (fabs(base) < DBL_EPSILON && exponent < 0)
     {
         g_InvalidInput = true;
         return 0.0;
@@ -71,19 +71,11 @@ double PowerWithUnsignedExponent(double base, unsigned int exponent)
     return result;
 }
 
-bool equal(double num1, double num2)
-{
-    if ((num1 - num2 > -0.0000001) && (num1 - num2 < 0.0000001))
-        return true;
-    else
-        return false;
-}
-
 // ====================²âÊÔ´úÂë====================
 void Test(const char* testName, double base, int exponent, double expectedResult, bool expectedFlag)
 {
     double result = Power(base, exponent);
-    if (equal(result, expectedResult) && g_InvalidInput == expectedFlag)
+    if (fabs(result - expectedResult) < DBL_EPSILON && g_InvalidInput == expectedFlag)
         std::cout << testName << " passed" << std::endl;
     else
         std::cout << testName << " FAILED" << std::endl;
