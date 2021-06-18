@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // ½áµã¡£
 
 #include <cstdio>
-#include "..\Utilities\List.h"
+#include "../Utilities/List.cpp"
 
 void DeleteNode(ListNode** pListHead, ListNode* pToBeDeleted)
 {
