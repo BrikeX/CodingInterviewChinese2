@@ -99,7 +99,7 @@ void PrintArray(int numbers[], int length)
     printf("\n");
 }
 
-void Test(char* testName, int numbers[], int length)
+void Test(const char* testName, int numbers[], int length)
 {
     if(testName != nullptr)
         printf("%s begins:\n", testName);
