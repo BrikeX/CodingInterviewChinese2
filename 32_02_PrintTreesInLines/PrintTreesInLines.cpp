@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 打印到一行。
 
 #include <cstdio>
-#include "..\Utilities\BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 #include <queue>
 
 void Print(BinaryTreeNode* pRoot)
@@ -170,11 +170,13 @@ void Test5()
     printf("\n");
 }
 
-//        100
-//        /
-//       50   
-//         \
-//         150
+/*
+       100
+       /
+      50   
+        \
+        150
+*/
 void Test6()
 {
     BinaryTreeNode* pNode100 = CreateBinaryTreeNode(100);
