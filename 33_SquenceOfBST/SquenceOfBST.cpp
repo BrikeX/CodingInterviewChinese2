@@ -67,52 +67,60 @@ void Test(const char* testName, int sequence[], int length, bool expected)
         printf("failed.\n");
 }
 
-//            10
-//         /      \
-//        6        14
-//       /\        /\
-//      4  8     12  16
+/*
+           10
+        /      \
+       6        14
+      /\        /\
+     4  8     12  16
+*/
 void Test1()
 {
     int data[] = {4, 8, 6, 12, 16, 14, 10};
     Test("Test1", data, sizeof(data)/sizeof(int), true);
 }
 
-//           5
-//          / \
-//         4   7
-//            /
-//           6
+/*
+          5
+         / \
+        4   7
+           /
+          6
+*/
 void Test2()
 {
     int data[] = {4, 6, 7, 5};
     Test("Test2", data, sizeof(data)/sizeof(int), true);
 }
 
-//               5
-//              /
-//             4
-//            /
-//           3
-//          /
-//         2
-//        /
-//       1
+/*
+              5
+             /
+            4
+           /
+          3
+         /
+        2
+       /
+      1
+*/
 void Test3()
 {
     int data[] = {1, 2, 3, 4, 5};
     Test("Test3", data, sizeof(data)/sizeof(int), true);
 }
 
-// 1
-//  \
-//   2
-//    \
-//     3
-//      \
-//       4
-//        \
-//         5
+/*
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+*/
 void Test4()
 {
     int data[] = {5, 4, 3, 2, 1};
