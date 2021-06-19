@@ -18,7 +18,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 表3所示。
 
 #include <cstdio>
-#include "..\Utilities\List.h"
+#include "../Utilities/List.cpp"
 
 ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 {
@@ -44,7 +44,7 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 }
 
 // ====================测试代码====================
-ListNode* Test(char* testName, ListNode* pHead1, ListNode* pHead2)
+ListNode* Test(const char* testName, ListNode* pHead1, ListNode* pHead2)
 {
     if(testName != nullptr)
         printf("%s begins:\n", testName);
