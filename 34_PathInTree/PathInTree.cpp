@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 有路径。从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
 
 #include <cstdio>
-#include "..\Utilities\BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 #include <vector>
 
 void FindPath(BinaryTreeNode* pRoot, int expectedSum, std::vector<int>& path, int& currentSum);
@@ -69,7 +69,7 @@ void FindPath
 } 
 
 // ====================测试代码====================
-void Test(char* testName, BinaryTreeNode* pRoot, int expectedSum)
+void Test(const char* testName, BinaryTreeNode* pRoot, int expectedSum)
 {
     if(testName != nullptr)
         printf("%s begins:\n", testName);
@@ -79,12 +79,14 @@ void Test(char* testName, BinaryTreeNode* pRoot, int expectedSum)
     printf("\n");
 }
 
-//            10
-//         /      \
-//        5        12
-//       /\        
-//      4  7     
-// 有两条路径上的结点和为22
+/*
+           10
+        /      \
+       5        12
+      /\        
+     4  7     
+有两条路径上的结点和为22
+*/
 void Test1()
 {
     BinaryTreeNode* pNode10 = CreateBinaryTreeNode(10);
@@ -102,12 +104,14 @@ void Test1()
     DestroyTree(pNode10);
 }
 
-//            10
-//         /      \
-//        5        12
-//       /\        
-//      4  7     
-// 没有路径上的结点和为15
+/*
+           10
+        /      \
+       5        12
+      /\        
+     4  7     
+没有路径上的结点和为15
+*/
 void Test2()
 {
     BinaryTreeNode* pNode10 = CreateBinaryTreeNode(10);
@@ -125,16 +129,18 @@ void Test2()
     DestroyTree(pNode10);
 }
 
-//               5
-//              /
-//             4
-//            /
-//           3
-//          /
-//         2
-//        /
-//       1
-// 有一条路径上面的结点和为15
+/*
+              5
+             /
+            4
+           /
+          3
+         /
+        2
+       /
+      1
+有一条路径上面的结点和为15
+*/
 void Test3()
 {
     BinaryTreeNode* pNode5 = CreateBinaryTreeNode(5);
@@ -154,16 +160,18 @@ void Test3()
     DestroyTree(pNode5);
 }
 
-// 1
-//  \
-//   2
-//    \
-//     3
-//      \
-//       4
-//        \
-//         5
-// 没有路径上面的结点和为16
+/*
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+没有路径上面的结点和为16
+*/
 void Test4()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
