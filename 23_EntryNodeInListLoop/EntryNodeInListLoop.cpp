@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 环的入口结点是结点3。
 
 #include <cstdio>
-#include "../Utilities/list.h"
+#include "../Utilities/List.cpp"
 
 ListNode* MeetingNode(ListNode* pHead)
 {
@@ -76,7 +76,7 @@ ListNode* EntryNodeOfLoop(ListNode* pHead)
 }
 
 // ==================== Test Code ====================
-void Test(char* testName, ListNode* pHead, ListNode* entryNode)
+void Test(const char* testName, ListNode* pHead, ListNode* entryNode)
 {
     if(testName != nullptr)
         printf("%s begins: ", testName);
