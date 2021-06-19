@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 它的镜像一样，那么它是对称的。
 
 #include <cstdio>
-#include "../Utilities/BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 
 bool isSymmetrical(BinaryTreeNode* pRoot1, BinaryTreeNode* pRoot2);
 
@@ -42,7 +42,7 @@ bool isSymmetrical(BinaryTreeNode* pRoot1, BinaryTreeNode* pRoot2)
 }
 
 // ====================测试代码====================
-void Test(char* testName, BinaryTreeNode* pRoot, bool expected)
+void Test(const char* testName, BinaryTreeNode* pRoot, bool expected)
 {
     if(testName != nullptr)
         printf("%s begins: ", testName);
@@ -118,15 +118,17 @@ void Test3()
     DestroyTree(pNode8);
 }
 
-//               5
-//              / \
-//             3   3
-//            /     \
-//           4       4
-//          /         \
-//         2           2
-//        /             \
-//       1               1
+/*
+              5
+             / \
+            3   3
+           /     \
+          4       4
+         /         \
+        2           2
+       /             \
+      1               1
+*/
 void Test4()
 {
     BinaryTreeNode* pNode5 = CreateBinaryTreeNode(5);
@@ -152,16 +154,17 @@ void Test4()
     DestroyTree(pNode5);
 }
 
-
-//               5
-//              / \
-//             3   3
-//            /     \
-//           4       4
-//          /         \
-//         6           2
-//        /             \
-//       1               1
+/*
+              5
+             / \
+            3   3
+           /     \
+          4       4
+         /         \
+        6           2
+       /             \
+      1               1
+*/
 void Test5()
 {
     BinaryTreeNode* pNode5 = CreateBinaryTreeNode(5);
@@ -187,15 +190,17 @@ void Test5()
     DestroyTree(pNode5);
 }
 
-//               5
-//              / \
-//             3   3
-//            /     \
-//           4       4
-//          /         \
-//         2           2
-//                      \
-//                       1
+/*
+              5
+             / \
+            3   3
+           /     \
+          4       4
+         /         \
+        2           2
+                     \
+                      1
+*/
 void Test6()
 {
     BinaryTreeNode* pNode5 = CreateBinaryTreeNode(5);
@@ -235,14 +240,16 @@ void Test8()
     Test("Test8", nullptr, true);
 }
 
-// 所有结点都有相同的值，树对称
-//               5
-//              / \
-//             5   5
-//            /     \
-//           5       5
-//          /         \
-//         5           5
+/*
+所有结点都有相同的值，树对称
+              5
+             / \
+            5   5
+           /     \
+          5       5
+         /         \
+        5           5
+*/
 void Test9()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(5);
@@ -266,14 +273,16 @@ void Test9()
     DestroyTree(pNode1);
 }
 
-// 所有结点都有相同的值，树不对称
-//               5
-//              / \
-//             5   5
-//            /     \
-//           5       5
-//          /       /
-//         5       5
+/*
+所有结点都有相同的值，树不对称
+              5
+             / \
+            5   5
+           /     \
+          5       5
+         /       /
+        5       5
+*/
 void Test10()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(5);
@@ -297,7 +306,7 @@ void Test10()
     DestroyTree(pNode1);
 }
 
-void main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     Test1();
     Test2();
@@ -309,4 +318,6 @@ void main(int argc, char* argv[])
     Test8();
     Test9();
     Test10();
+
+    return 0;
 }
