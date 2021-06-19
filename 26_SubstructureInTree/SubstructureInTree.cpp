@@ -16,6 +16,8 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 题目：输入两棵二叉树A和B，判断B是不是A的子结构。
 
 #include <cstdio>
+#include <cfloat>
+#include <cmath>
 
 struct BinaryTreeNode
 {
@@ -61,7 +63,7 @@ bool DoesTree1HaveTree2(BinaryTreeNode* pRoot1, BinaryTreeNode* pRoot2)
 
 bool Equal(double num1, double num2)
 {
-    if((num1 - num2 > -0.0000001) && (num1 - num2 < 0.0000001))
+    if (fabs(num1 - num2) < DBL_EPSILON)
         return true;
     else
         return false;
@@ -103,7 +105,7 @@ void DestroyTree(BinaryTreeNode* pRoot)
 }
 
 // ====================测试代码====================
-void Test(char* testName, BinaryTreeNode* pRoot1, BinaryTreeNode* pRoot2, bool expected)
+void Test(const char* testName, BinaryTreeNode* pRoot1, BinaryTreeNode* pRoot2, bool expected)
 {
     if(HasSubtree(pRoot1, pRoot2) == expected)
         printf("%s passed.\n", testName);
@@ -111,14 +113,16 @@ void Test(char* testName, BinaryTreeNode* pRoot1, BinaryTreeNode* pRoot2, bool e
         printf("%s failed.\n", testName);
 }
 
-// 树中结点含有分叉，树B是树A的子结构
-//                  8                8
-//              /       \           / \
-//             8         7         9   2
-//           /   \
-//          9     2
-//               / \
-//              4   7
+/*
+树中结点含有分叉，树B是树A的子结构
+                 8                8
+             /       \           / \
+            8         7         9   2
+          /   \
+         9     2
+              / \
+             4   7
+*/
 void Test1()
 {
     BinaryTreeNode* pNodeA1 = CreateBinaryTreeNode(8);
@@ -145,14 +149,16 @@ void Test1()
     DestroyTree(pNodeB1);
 }
 
-// 树中结点含有分叉，树B不是树A的子结构
-//                  8                8
-//              /       \           / \
-//             8         7         9   2
-//           /   \
-//          9     3
-//               / \
-//              4   7
+/*
+树中结点含有分叉，树B不是树A的子结构
+                 8                8
+             /       \           / \
+            8         7         9   2
+          /   \
+         9     3
+              / \
+             4   7
+*/
 void Test2()
 {
     BinaryTreeNode* pNodeA1 = CreateBinaryTreeNode(8);
@@ -179,16 +185,18 @@ void Test2()
     DestroyTree(pNodeB1);
 }
 
-// 树中结点只有左子结点，树B是树A的子结构
-//                8                  8
-//              /                   / 
-//             8                   9   
-//           /                    /
-//          9                    2
-//         /      
-//        2        
-//       /
-//      5
+/*
+树中结点只有左子结点，树B是树A的子结构
+               8                  8
+             /                   / 
+            8                   9   
+          /                    /
+         9                    2
+        /      
+       2        
+      /
+     5
+*/
 void Test3()
 {
     BinaryTreeNode* pNodeA1 = CreateBinaryTreeNode(8);
@@ -215,16 +223,18 @@ void Test3()
     DestroyTree(pNodeB1);
 }
 
-// 树中结点只有左子结点，树B不是树A的子结构
-//                8                  8
-//              /                   / 
-//             8                   9   
-//           /                    /
-//          9                    3
-//         /      
-//        2        
-//       /
-//      5
+/*
+树中结点只有左子结点，树B不是树A的子结构
+               8                  8
+             /                   / 
+            8                   9   
+          /                    /
+         9                    3
+        /      
+       2        
+      /
+     5
+*/
 void Test4()
 {
     BinaryTreeNode* pNodeA1 = CreateBinaryTreeNode(8);
@@ -251,16 +261,18 @@ void Test4()
     DestroyTree(pNodeB1);
 }
 
-// 树中结点只有右子结点，树B是树A的子结构
-//       8                   8
-//        \                   \ 
-//         8                   9   
-//          \                   \
-//           9                   2
-//            \      
-//             2        
-//              \
-//               5
+/*
+树中结点只有右子结点，树B是树A的子结构
+      8                   8
+       \                   \ 
+        8                   9   
+         \                   \
+          9                   2
+           \      
+            2        
+             \
+              5
+*/
 void Test5()
 {
     BinaryTreeNode* pNodeA1 = CreateBinaryTreeNode(8);
@@ -287,16 +299,18 @@ void Test5()
     DestroyTree(pNodeB1);
 }
 
-// 树A中结点只有右子结点，树B不是树A的子结构
-//       8                   8
-//        \                   \ 
-//         8                   9   
-//          \                 / \
-//           9               3   2
-//            \      
-//             2        
-//              \
-//               5
+/*
+树A中结点只有右子结点，树B不是树A的子结构
+      8                   8
+       \                   \ 
+        8                   9   
+         \                 / \
+          9               3   2
+           \      
+            2        
+             \
+              5
+*/
 void Test6()
 {
     BinaryTreeNode* pNodeA1 = CreateBinaryTreeNode(8);
