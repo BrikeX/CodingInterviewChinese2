@@ -16,7 +16,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 题目：请实现两个函数，分别用来序列化和反序列化二叉树。
 
 #include <cstdio>
-#include "..\Utilities\BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 #include <iostream>
 #include <fstream>
 
@@ -100,7 +100,7 @@ void Test(const char* testName, const BinaryTreeNode* pRoot)
 
     PrintTree(pRoot);
 
-    char* fileName = "test.txt";
+    const char* fileName = "test.txt";
     ofstream fileOut;
     fileOut.open(fileName);
 
