@@ -18,14 +18,14 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 出现了5次，超过数组长度的一半，因此输出2。
 
 #include <cstdio>
-#include "..\Utilities\Array.h"
+#include "../Utilities/Array.cpp"
 
 bool g_bInputInvalid = false;
 
 bool CheckInvalidArray(int* numbers, int length)
 {
     g_bInputInvalid = false;
-    if(numbers == nullptr && length <= 0)
+    if(numbers == nullptr || length <= 0)
         g_bInputInvalid = true;
 
     return g_bInputInvalid;
@@ -109,7 +109,7 @@ int MoreThanHalfNum_Solution2(int* numbers, int length)
 }
 
 // ====================测试代码====================
-void Test(char* testName, int* numbers, int length, int expectedValue, bool expectedFlag)
+void Test(const char* testName, int* numbers, int length, int expectedValue, bool expectedFlag)
 {
     if(testName != nullptr)
         printf("%s begins: \n", testName);
