@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 不能创建任何新的结点，只能调整树中结点指针的指向。
 
 #include <cstdio>
-#include "..\Utilities\BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 
 void ConvertNode(BinaryTreeNode* pNode, BinaryTreeNode** pLastNodeInList);
 
@@ -95,7 +95,7 @@ void DestroyList(BinaryTreeNode* pHeadOfList)
     }
 }
 
-void Test(char* testName, BinaryTreeNode* pRootOfTree)
+void Test(const char* testName, BinaryTreeNode* pRootOfTree)
 {
     if(testName != nullptr)
         printf("%s begins:\n", testName);
@@ -107,11 +107,13 @@ void Test(char* testName, BinaryTreeNode* pRootOfTree)
     PrintDoubleLinkedList(pHeadOfList);
 }
 
-//            10
-//         /      \
-//        6        14
-//       /\        /\
-//      4  8     12  16
+/*
+           10
+        /      \
+       6        14
+      /\        /\
+     4  8     12  16
+*/
 void Test1()
 {
     BinaryTreeNode* pNode10 = CreateBinaryTreeNode(10);
@@ -131,15 +133,17 @@ void Test1()
     DestroyList(pNode4);
 }
 
-//               5
-//              /
-//             4
-//            /
-//           3
-//          /
-//         2
-//        /
-//       1
+/*
+              5
+             /
+            4
+           /
+          3
+         /
+        2
+       /
+      1
+*/
 void Test2()
 {
     BinaryTreeNode* pNode5 = CreateBinaryTreeNode(5);
@@ -158,15 +162,17 @@ void Test2()
     DestroyList(pNode1);
 }
 
-// 1
-//  \
-//   2
-//    \
-//     3
-//      \
-//       4
-//        \
-//         5
+/*
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+*/
 void Test3()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
