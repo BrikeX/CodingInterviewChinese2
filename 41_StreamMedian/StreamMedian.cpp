@@ -21,8 +21,16 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 #include <algorithm>
 #include <vector>
 #include <functional>
+#include <cmath>
+#include <cfloat>
+#include <exception>
+#include <iostream>
 
 using namespace std;
+
+struct ooops : std::exception {
+  const char* what() const noexcept {return "No numbers are available.";}
+};
 
 template<typename T> class DynamicArray
 {
@@ -67,7 +75,12 @@ public:
     {
         int size = min.size() + max.size();
         if(size == 0)
-            throw exception("No numbers are available");
+        {
+            ooops e;
+
+            throw e;
+        }
+            // throw exception("No numbers are available");
 
         T median = 0;
         if((size & 1) == 1)
@@ -84,12 +97,12 @@ private:
 };
 
 // ====================≤‚ ‘¥˙¬Î====================
-void Test(char* testName, DynamicArray<double>& numbers, double expected)
+void Test(const char* testName, DynamicArray<double>& numbers, double expected)
 {
     if(testName != nullptr)
         printf("%s begins: ", testName);
 
-    if(abs(numbers.GetMedian() - expected) < 0.0000001)
+    if(fabs(numbers.GetMedian() - expected) < DBL_EPSILON)
         printf("Passed.\n");
     else
         printf("FAILED.\n");
@@ -105,8 +118,10 @@ int main(int argc, char* argv[])
         numbers.GetMedian();
         printf("FAILED.\n");
     }
-    catch(const exception&)
+    catch(const exception& ex)
     {
+        cout << ex.what() << " ";
+
         printf("Passed.\n");
     }
 
