@@ -18,7 +18,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 结点外，还有一个m_pSibling 指向链表中的任意结点或者nullptr。
 
 #include <cstdio>
-#include "ComplexList.h"
+#include "ComplexList.cpp"
 
 void CloneNodes(ComplexListNode* pHead);
 void ConnectSiblingNodes(ComplexListNode* pHead);
@@ -102,12 +102,14 @@ void Test(const char* testName, ComplexListNode* pHead)
     PrintList(pClonedHead);
 }
 
-//          -----------------
-//         \|/              |
-//  1-------2-------3-------4-------5
-//  |       |      /|\             /|\
-//  --------+--------               |
-//          -------------------------
+/*
+         -----------------
+        \|/              |
+ 1-------2-------3-------4-------5
+ |       |      /|\             /|\
+ --------+--------               |
+         -------------------------
+*/
 void Test1()
 {
     ComplexListNode* pNode1 = CreateNode(1);
@@ -124,13 +126,15 @@ void Test1()
     Test("Test1", pNode1);
 }
 
-// m_pSibling指向结点自身
-//          -----------------
-//         \|/              |
-//  1-------2-------3-------4-------5
-//         |       | /|\           /|\
-//         |       | --             |
-//         |------------------------|
+/*
+m_pSibling指向结点自身
+         -----------------
+        \|/              |
+ 1-------2-------3-------4-------5
+        |       | /|\           /|\
+        |       | --             |
+        |------------------------|
+*/
 void Test2()
 {
     ComplexListNode* pNode1 = CreateNode(1);
@@ -147,13 +151,15 @@ void Test2()
     Test("Test2", pNode1);
 }
 
-// m_pSibling形成环
-//          -----------------
-//         \|/              |
-//  1-------2-------3-------4-------5
-//          |              /|\
-//          |               |
-//          |---------------|
+/*
+m_pSibling形成环
+         -----------------
+        \|/              |
+ 1-------2-------3-------4-------5
+         |              /|\
+         |               |
+         |---------------|
+*/
 void Test3()
 {
     ComplexListNode* pNode1 = CreateNode(1);
