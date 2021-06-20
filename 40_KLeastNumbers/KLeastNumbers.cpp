@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 这8个数字，则最小的4个数字是1、2、3、4。
 
 #include <cstdio>
-#include "..\Utilities\Array.h"
+#include "../Utilities/Array.cpp"
 
 #include <set>
 #include <vector>
@@ -84,7 +84,7 @@ void GetLeastNumbers_Solution2(const vector<int>& data, intSet& leastNumbers, in
 }
 
 // ====================测试代码====================
-void Test(char* testName, int* data, int n, int* expectedResult, int k)
+void Test(const char* testName, int* data, int n, int* expectedResult, int k)
 {
     if(testName != nullptr)
         printf("%s begins: \n", testName);
