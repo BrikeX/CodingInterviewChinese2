@@ -17,6 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 数组成一个子数组。求所有子数组的和的最大值。要求时间复杂度为O(n)。
 
 #include <cstdio>
+#include <vector>
 
 bool g_InvalidInput = false;
 
@@ -30,24 +31,47 @@ int FindGreatestSumOfSubArray(int *pData, int nLength)
 
     g_InvalidInput = false;
 
-    int nCurSum = 0;
-    int nGreatestSum = 0x80000000;
-    for(int i = 0; i < nLength; ++i)
+    // int nCurSum = 0;
+    // int nGreatestSum = 0x80000000;
+    // for(int i = 0; i < nLength; ++i)
+    // {
+    //     if(nCurSum <= 0)
+    //         nCurSum = pData[i];
+    //     else
+    //         nCurSum += pData[i];
+
+    //     if(nCurSum > nGreatestSum)
+    //         nGreatestSum = nCurSum;
+    // }
+
+    // return nGreatestSum;
+
+    // DP
+    std::vector<int> greatest_sum(nLength);
+
+    greatest_sum[0] = pData[0];
+
+    int sum_max = greatest_sum[0];
+
+    for (size_t i = 1; i < nLength; i++)
     {
-        if(nCurSum <= 0)
-            nCurSum = pData[i];
+        if (greatest_sum[i - 1] > 0)
+        {
+            greatest_sum[i] = greatest_sum[i - 1] + pData[i];
+        }
         else
-            nCurSum += pData[i];
-
-        if(nCurSum > nGreatestSum)
-            nGreatestSum = nCurSum;
+        {
+            greatest_sum[i] = pData[i];
+        }
+        
+        sum_max = std::max(sum_max, greatest_sum[i]);
     }
-
-    return nGreatestSum;
+    
+    return sum_max;
 } 
 
 // ====================测试代码====================
-void Test(char* testName, int* pData, int nLength, int expected, bool expectedFlag)
+void Test(const char* testName, int* pData, int nLength, int expected, bool expectedFlag)
 {
     if(testName != nullptr)
         printf("%s begins: \n", testName);
