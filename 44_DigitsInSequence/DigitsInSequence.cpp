@@ -19,6 +19,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 
 #include <iostream>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -50,7 +51,7 @@ int countOfIntegers(int digits)
 	if(digits == 1)
 		return 10;
 
-	int count = (int) std::pow(10, digits - 1);
+	int count = (int) pow(10, digits - 1);
 	return 9 * count;
 }
 
@@ -68,7 +69,7 @@ int beginNumber(int digits)
 	if(digits == 1)
 		return 0;
 
-	return (int) std::pow(10, digits - 1);
+	return (int) pow(10, digits - 1);
 }
 
 // ====================测试代码====================
@@ -80,8 +81,7 @@ void test(const char* testName, int inputIndex, int expectedOutput)
 		cout << testName << " FAILED." << endl;
 }
 
-
-int main()
+int main(int argc, char const *argv[])
 {
 	test("Test1", 0, 0);
 	test("Test2", 1, 1);
@@ -92,5 +92,6 @@ int main()
 	test("Test7", 1000, 3); // 数字370的第一位，3
 	test("Test8", 1001, 7); // 数字370的第二位，7
 	test("Test9", 1002, 0); // 数字370的第三位，0
+
 	return 0;
 }
