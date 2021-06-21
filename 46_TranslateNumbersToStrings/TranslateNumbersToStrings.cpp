@@ -43,10 +43,11 @@ int GetTranslationCount(const string& number)
     for(int i = length - 1; i >= 0; --i)
     {
         count = 0;
-         if(i < length - 1)
-               count = counts[i + 1];
-         else
-               count = 1;
+        
+        if(i < length - 1)
+            count = counts[i + 1];
+        else
+            count = 1;
 
         if(i < length - 1)
         {
