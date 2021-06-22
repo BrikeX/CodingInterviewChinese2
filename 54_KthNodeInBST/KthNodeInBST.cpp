@@ -16,7 +16,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 题目：给定一棵二叉搜索树，请找出其中的第k大的结点。
 
 #include <cstdio>
-#include "../Utilities/BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 
 const BinaryTreeNode* KthNodeCore(const BinaryTreeNode* pRoot, unsigned int& k);
 
@@ -129,15 +129,17 @@ void TestB()
     printf("\n\n");
 }
 
-// 1
-//  \
-//   2
-//    \
-//     3
-//      \
-//       4
-//        \
-//         5
+/*
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+*/
 void TestC()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
@@ -187,11 +189,13 @@ void TestE()
     printf("\n\n");
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char const *argv[])
 {
     TestA();
     TestB();
     TestC();
     TestD();
     TestE();
+
+    return 0;
 }
