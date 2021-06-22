@@ -16,7 +16,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 题目：输入两个链表，找出它们的第一个公共结点。
 
 #include <cstdio>
-#include "..\Utilities\List.h"
+#include "../Utilities/List.cpp"
 
 unsigned int GetListLength(ListNode* pHead);
 
@@ -70,7 +70,7 @@ unsigned int GetListLength(ListNode* pHead)
 // ====================测试代码====================
 void DestroyNode(ListNode* pNode);
 
-void Test(char* testName, ListNode* pHead1, ListNode* pHead2, ListNode* pExpected)
+void Test(const char* testName, ListNode* pHead1, ListNode* pHead2, ListNode* pExpected)
 {
     if(testName != nullptr)
         printf("%s begins: ", testName);
@@ -82,10 +82,12 @@ void Test(char* testName, ListNode* pHead1, ListNode* pHead2, ListNode* pExpecte
         printf("Failed.\n");
 }
 
-// 第一个公共结点在链表中间
-// 1 - 2 - 3 \
-//            6 - 7
-//     4 - 5 /
+/*
+第一个公共结点在链表中间
+1 - 2 - 3 \
+           6 - 7
+    4 - 5 /
+*/
 void Test1()
 {
     ListNode* pNode1 = CreateListNode(1);
@@ -140,10 +142,12 @@ void Test2()
     DestroyList(pNode5);
 }
 
-// 公共结点是最后一个结点
-// 1 - 2 - 3 - 4 \
-//                7
-//         5 - 6 /
+/*
+公共结点是最后一个结点
+1 - 2 - 3 - 4 \
+               7
+        5 - 6 /
+*/
 void Test3()
 {
     ListNode* pNode1 = CreateListNode(1);
