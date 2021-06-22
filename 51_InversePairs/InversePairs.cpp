@@ -77,7 +77,7 @@ int InversePairsCore(int* data, int* copy, int start, int end)
 }
 
 // ====================²âÊÔ´úÂë====================
-void Test(char* testName, int* data, int length, int expected)
+void Test(const char* testName, int* data, int length, int expected)
 {
     if(testName != nullptr)
         printf("%s begins: ", testName);
