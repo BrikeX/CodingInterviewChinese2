@@ -17,7 +17,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 任意结点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
 
 #include <cstdio>
-#include "..\Utilities\BinaryTree.h"
+#include "../Utilities/BinaryTree.cpp"
 
 // ====================方法1====================
 int TreeDepth(const BinaryTreeNode* pRoot)
@@ -97,12 +97,14 @@ void Test(const char* testName, const BinaryTreeNode* pRoot, bool expected)
         printf("Failed.\n");
 }
 
-// 完全二叉树
-//             1
-//         /      \
-//        2        3
-//       /\       / \
-//      4  5     6   7
+/*
+完全二叉树
+            1
+        /      \
+       2        3
+      /\       / \
+     4  5     6   7
+*/
 void Test1()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
@@ -122,14 +124,16 @@ void Test1()
     DestroyTree(pNode1);
 }
 
-// 不是完全二叉树，但是平衡二叉树
-//             1
-//         /      \
-//        2        3
-//       /\         \
-//      4  5         6
-//        /
-//       7
+/*
+不是完全二叉树，但是平衡二叉树
+            1
+        /      \
+       2        3
+      /\         \
+     4  5         6
+       /
+      7
+*/
 void Test2()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
@@ -150,14 +154,16 @@ void Test2()
     DestroyTree(pNode1);
 }
 
-// 不是平衡二叉树
-//             1
-//         /      \
-//        2        3
-//       /\         
-//      4  5        
-//        /
-//       6
+/*
+不是平衡二叉树
+            1
+        /      \
+       2        3
+      /\         
+     4  5        
+       /
+      6
+*/
 void Test3()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
@@ -176,16 +182,17 @@ void Test3()
     DestroyTree(pNode1);
 }
 
-
-//               1
-//              /
-//             2
-//            /
-//           3
-//          /
-//         4
-//        /
-//       5
+/*
+              1
+             /
+            2
+           /
+          3
+         /
+        4
+       /
+      5
+*/
 void Test4()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
@@ -204,15 +211,17 @@ void Test4()
     DestroyTree(pNode1);
 }
 
-// 1
-//  \
-//   2
-//    \
-//     3
-//      \
-//       4
-//        \
-//         5
+/*
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+*/
 void Test5()
 {
     BinaryTreeNode* pNode1 = CreateBinaryTreeNode(1);
