@@ -12,7 +12,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 作者：何海涛
 //==================================================================
 
-#include "StringUtil.h"
+// #include "StringUtil.h"
 
 void Reverse(char *pBegin, char *pEnd)
 {

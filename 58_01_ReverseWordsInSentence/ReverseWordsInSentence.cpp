@@ -18,7 +18,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 则输出"student. a am I"。
 
 #include <cstdio>
-#include "..\Utilities\StringUtil.h"
+#include "../Utilities/StringUtil.cpp"
 #include <string>
 
 char* ReverseSentence(char *pData)
@@ -99,7 +99,10 @@ void Test3()
 // 边界值测试，测试空字符串
 void Test4()
 {
-    Test("Test4", "", "");
+    char input[] = "";
+    char expected[] = "";
+
+    Test("Test4", input, expected);
 }
 
 // 边界值测试，字符串中只有空格
