@@ -16,7 +16,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 题目：输入两个树结点，求它们的最低公共祖先。
 
 #include <cstdio>
-#include "..\Utilities\Tree.h"
+#include "../Utilities/Tree.cpp"
 #include <list>
 
 using namespace std;
@@ -95,14 +95,16 @@ void Test(const char* testName, const TreeNode* pRoot, const TreeNode* pNode1, c
         printf("Failed.\n");
 }
 
-// 形状普通的树
-//              1
-//            /   \
-//           2     3
-//       /       \
-//      4         5
-//     / \      / |  \
-//    6   7    8  9  10
+/*
+形状普通的树
+             1
+           /   \
+          2     3
+      /       \
+     4         5
+    / \      / |  \
+   6   7    8  9  10
+*/
 void Test1()
 {
     TreeNode* pNode1 = CreateTreeNode(1);
